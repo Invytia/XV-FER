@@ -8,12 +8,12 @@
     <style>
         :root {
             /* Paleta Enredados: Lila, Rosa y Dorado */
-            --rosa-bloque: rgba(216, 191, 216, 0.55);
-            --rosa-bloque-borde: rgba(212, 175, 55, 0.4);
-            --rosa-bloque-alt: rgba(255, 228, 242, 0.45);
-            --text-deep: #3b1f47; /* Morado profundo */
+            --rosa-bloque: rgba(255, 255, 255, 0.25);
+            --rosa-bloque-borde: rgba(212, 175, 55, 0.3);
+            --rosa-bloque-alt: rgba(255, 255, 255, 0.2);
+            --text-deep: #2d1645; /* Morado profundo para legibilidad en cristal */
             --text-rose: #b58900; /* Dorado intenso */
-            --text-muted: #6b4d75;
+            --text-muted: #4a2c5d;
             --btn-grad-1: rgba(181, 137, 0, 0.9);
             --btn-grad-2: rgba(212, 175, 55, 0.9);
         }
@@ -22,7 +22,7 @@
         body, html {
             width: 100%; height: 100%;
             font-family: 'Cormorant Garamond', Georgia, serif;
-            background-color: #1a0b26; /* Fondo oscuro del sobre morado */
+            background-color: #1a0b26; /* Fondo oscuro y mágico */
             color: var(--text-deep);
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -155,29 +155,24 @@
             padding: 60px 20px; opacity: 0; transform: translateY(20px);
             transition: opacity 1.5s ease-out 0.6s, transform 1.5s ease-out 0.6s;
         }
-        #main-invitation::before {
-            content: ''; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            /* Se sugiere una imagen de fondo que encaje con el atardecer/linternas, un degradado por defecto */
-            background: linear-gradient(to bottom, #ebd4f5 0%, #ffe6eb 100%); 
-            background-size: cover; z-index: -1; will-change: transform;
-        }
         body.content-active #main-invitation { opacity: 1; transform: translateY(0); }
 
-        /* ====== FRAME CON BRILLOS ====== */
+        /* ====== FRAME DE CRISTAL ====== */
         .invitation-frame {
-            max-width:500px; width:100%; border:1px solid rgba(212,175,55,0.4);
+            max-width:500px; width:100%; border:1px solid rgba(212,175,55,0.3);
             padding:50px 38px; text-align:center; position:relative;
-            background:rgba(255,253,254,0.78);
-            box-shadow:0 15px 40px rgba(59,31,71,0.15),0 0 0 1px rgba(255,255,255,0.6) inset;
-            backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+            /* Mayor transparencia para ver el fondo y las linternas */
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2) inset;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
             border-radius:4px; overflow:visible;
         }
 
         .hero-photo-wrap {
             width: 240px; height: 320px; margin: 0 auto 25px auto;
             border-radius: 120px 120px 0 0; padding: 6px;
-            background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(212,175,55,0.4);
-            box-shadow: 0 15px 35px rgba(59,31,71,0.1);
+            background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(212,175,55,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 114px 114px 0 0; }
 
@@ -200,9 +195,17 @@
         .section-heading { font-size: 26px; letter-spacing: 1px; margin-bottom: 16px; }
         .section-heading-sm { font-size: 20px; letter-spacing: 1px; margin-bottom: 12px; }
         .section-tag { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 16px; letter-spacing: 2px; color: var(--text-rose); font-weight: 500; margin-bottom: 14px; }
-        .main-title { font-family:'Pinyon Script',cursive;font-size:84px;color:var(--text-deep); margin-bottom:2px;text-shadow:0 1px 3px rgba(255,255,255,0.8);line-height:1; }
+        
+        .main-title { 
+            font-family:'Pinyon Script',cursive;font-size:84px;color:var(--text-deep); 
+            margin-bottom:2px; line-height:1;
+            /* Compensación para centrar la fuente cursiva */
+            transform: translateX(-12px);
+            text-align: center;
+        }
+        
         .full-name { font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;color:var(--text-muted);margin-bottom:30px;font-weight:300;text-transform:uppercase; }
-        .phrase { font-family:'EB Garamond','Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#4a3338;line-height:1.8;margin-bottom:35px;padding:0 10px;font-weight:400; }
+        .phrase { font-family:'EB Garamond','Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#2a1638;line-height:1.8;margin-bottom:35px;padding:0 10px;font-weight:400; }
         .family-names { font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;font-style:italic;color:var(--text-deep);line-height:1.6;margin-top:6px; }
         .info-label { font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 11px; letter-spacing: 3px; color: var(--text-rose); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
         .info-block { margin-bottom:28px; }
@@ -214,29 +217,26 @@
 
         /* ====== COUNTDOWN ====== */
         .countdown-grid { display:flex;justify-content:center;gap:10px;margin:18px auto 6px auto;max-width:340px; }
-        .countdown-item { flex:1;background:rgba(255,255,255,0.6);border:1px solid rgba(212,175,55,0.3);padding:12px 5px;border-radius:4px;backdrop-filter:blur(6px); }
+        .countdown-item { flex:1;background:rgba(255,255,255,0.4);border:1px solid rgba(212,175,55,0.3);padding:12px 5px;border-radius:4px;backdrop-filter:blur(6px); }
         .countdown-number { font-family:'Cinzel',serif;font-size:24px;font-weight:400;color:var(--text-rose);display:block; }
         .countdown-label { font-family:'Montserrat',sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);font-weight:500; }
 
         /* ====== BLOQUES VIDRIO ====== */
         .bloque-vidrio, .bloque-vidrio-alt {
             border-radius:8px; padding:28px 26px; margin:0 -38px; position:relative;
-            backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
         }
         .bloque-vidrio { background:var(--rosa-bloque); border:1px solid var(--rosa-bloque-borde); }
         .bloque-vidrio-alt { background:var(--rosa-bloque-alt); border:1px solid rgba(212,175,55,0.2); }
-        .bloque-vidrio .info-label,.bloque-vidrio-alt .info-label,
-        .bloque-vidrio .section-tag,.bloque-vidrio-alt .section-tag { color:var(--text-deep); }
         
         /* ====== CALENDARIO ===== */
-        .calendar-widget{ margin-top:18px; background:rgba(255,255,255,0.25); border:1px solid rgba(212,175,55,0.4); border-radius:18px; overflow:hidden; backdrop-filter:blur(14px); box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
+        .calendar-widget{ margin-top:18px; background:rgba(255,255,255,0.25); border:1px solid rgba(212,175,55,0.4); border-radius:18px; overflow:hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
         .calendar-header{ padding:18px 20px 14px; text-align:center; color: var(--text-deep); position:relative; }
         .calendar-header::after{ content:''; position:absolute; left:0; bottom:0; width:100%; height:1px; background:rgba(212,175,55,0.3); }
         .calendar-year{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:5px; text-transform:uppercase; opacity:0.9; }
         .calendar-month{ margin-top:5px; font-family: 'Pinyon Script', cursive; font-size:36px; font-weight:400; letter-spacing:1px; color:var(--text-deep); }
         .calendar-body{ padding:18px 16px 20px; }
         .calendar-days-header{ display:grid; grid-template-columns:repeat(7,1fr); margin-bottom:12px; }
-        .calendar-day-name{ text-align:center; font-family:'Montserrat', sans-serif; font-size:9px; letter-spacing:1.5px; color:rgba(59,31,71,0.7); text-transform:uppercase; }
+        .calendar-day-name{ text-align:center; font-family:'Montserrat', sans-serif; font-size:9px; letter-spacing:1.5px; color:rgba(45,22,69,0.8); text-transform:uppercase; }
         .calendar-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:8px; }
         .cal-day{ width:34px; height:34px; margin:auto; display:flex; align-items:center; justify-content:center; font-family: 'Cormorant Garamond', serif; font-size:17px; color:var(--text-deep); position:relative; border-radius:50%; transition:all .3s ease; }
         .cal-day.empty{ opacity:0; }
@@ -244,20 +244,15 @@
         
         .btn-accion {
             margin-top:18px; width:100%; border:1px solid rgba(212,175,55,0.6); border-radius:14px; padding:14px 18px;
-            background: transparent; color:var(--text-rose); display:flex; align-items:center; justify-content:center; gap:10px;
-            cursor:pointer; transition:.35s ease; font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; text-transform:uppercase;
+            background: rgba(255,255,255,0.2); color:var(--text-rose); display:flex; align-items:center; justify-content:center; gap:10px;
+            cursor:pointer; transition:.35s ease; font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
         }
-        .btn-accion:hover { transform:translateY(-2px); background: rgba(212,175,55,0.1); }
+        .btn-accion:hover { transform:translateY(-2px); background: rgba(212,175,55,0.15); }
         .btn-accion svg { width:16px; height:16px; fill:var(--text-rose); flex-shrink:0; }
 
-        /* ====== MAP CARDS ====== */
-        .map-card { margin-top:14px;border:1px solid rgba(212,175,55,0.3);background:rgba(255,255,255,0.85);border-radius:8px;overflow:hidden;text-align:left;backdrop-filter:blur(4px); }
-        .map-card-header { background:linear-gradient(135deg,var(--btn-grad-1),var(--btn-grad-2));padding:11px 15px;display:flex;flex-direction:column;gap:2px; }
-        .map-card-tipo { font-family:'Cinzel',serif;font-size:7.5px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.9); }
-        .map-card-nombre { font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:400;color:#fff;line-height:1.2; }
-        .map-card-body { padding:10px 14px 14px; }
-        .map-card-direccion { font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;color:var(--text-muted);line-height:1.6;margin-bottom:8px; }
-        .map-wrapper { width:100%;height:175px;border-radius:4px;overflow:hidden;border:1px solid rgba(212,175,55,0.3); }
+        /* ====== MAPAS SIMPLES ====== */
+        .ubicacion-sencilla { text-align: left; margin-bottom: 35px; }
+        .map-wrapper { width:100%;height:180px;border-radius:6px;overflow:hidden;border:1px solid rgba(212,175,55,0.4); margin-bottom: 12px; }
 
         /* ====== GALERÍA CARRUSEL ====== */
         .carrusel-galeria {
@@ -292,7 +287,7 @@
             transform:translateX(-50%);
         }
         .itin-row { display:flex; align-items:center; justify-content:center; position:relative; margin-bottom:15px; }
-        .itin-hora { width:calc(50% - 26px); text-align:right; padding-right:16px; font-family:'Cinzel',serif; font-size:10px; font-weight:400; letter-spacing:1px; color:var(--text-deep); line-height:1.2; flex-shrink:0; }
+        .itin-hora { width:calc(50% - 26px); text-align:right; padding-right:16px; font-family:'Cinzel',serif; font-size:10px; font-weight:600; letter-spacing:1px; color:var(--text-deep); line-height:1.2; flex-shrink:0; }
         .itin-node { width:26px; height:26px; flex-shrink:0; position:relative; z-index:2; display:flex; align-items:center; justify-content:center; }
         .itin-node::before {
             content:'☼'; /* Sol de Enredados */ font-size:22px; color:var(--text-rose); line-height:1;
@@ -301,30 +296,25 @@
         .itin-evento { width:calc(50% - 26px); padding-left:16px; flex-shrink:0; }
         .itin-evento-nombre { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:21px; font-weight:400; color:var(--text-deep); line-height:1.1; text-align:left; }
 
-        /* ====== VESTIMENTA & REGALOS ====== */
-        .vestimenta-icons { display:flex;justify-content:center;gap:22px;margin-top:14px; }
-        .vestimenta-icon-item { display:flex;flex-direction:column;align-items:center;gap:6px; }
-        .vestimenta-icon-item svg { width:28px;height:28px;fill:var(--text-deep);opacity:0.85; }
-        .vestimenta-icon-label { font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:2px;color:var(--text-deep);text-transform:uppercase; }
-
         /* ====== CONFIRMACIÓN & FORMS ====== */
-        .rsvp-intro { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#4a3338;line-height:1.6;margin-bottom:22px; }
-        .rsvp-input-label { font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--text-deep);text-transform:uppercase;font-weight:400;display:block;margin-bottom:8px; }
+        .rsvp-intro { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#2a1638;line-height:1.6;margin-bottom:22px; }
+        .rsvp-input-label { font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--text-deep);text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px; text-align:left;}
         .rsvp-input {
             width:100%;padding:13px 16px;font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;
             color:var(--text-deep);background:rgba(255,255,255,0.7);border:1px solid rgba(212,175,55,0.4);
             border-radius:4px;outline:none;transition:border-color 0.3s,box-shadow 0.3s;
         }
+        select.rsvp-input { cursor: pointer; }
         .rsvp-input:focus { border-color:var(--text-rose);box-shadow:0 0 0 3px rgba(212,175,55,0.15); }
-        .rsvp-input-wrap { margin-bottom:18px; }
+        .rsvp-input-wrap { margin-bottom:18px; text-align: left; }
         
         .btn-confirmar {
             display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;
             padding:15px 24px;background:linear-gradient(135deg,var(--btn-grad-1),var(--btn-grad-2));
             color:#fff;border:none;font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:3px;
-            text-transform:uppercase;cursor:pointer;font-weight:400;border-radius:4px;
+            text-transform:uppercase;cursor:pointer;font-weight:600;border-radius:4px;
             box-shadow:0 5px 18px rgba(212,175,55,0.25);transition:all 0.4s ease;
-            position:relative;overflow:hidden;backdrop-filter:blur(4px);
+            position:relative;overflow:hidden;
         }
         .btn-confirmar::before { content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);transition:left 0.5s; }
         .btn-confirmar:hover::before { left:100%; }
@@ -337,7 +327,7 @@
 
         #music-control-btn {
             position:fixed;bottom:25px;right:25px;width:48px;height:48px;border-radius:50%;
-            background:rgba(59,31,71,0.85);border:1px solid rgba(212,175,55,0.4);color:#fff;
+            background:rgba(45,22,69,0.85);border:1px solid rgba(212,175,55,0.4);color:#fff;
             display:flex;justify-content:center;align-items:center;cursor:pointer;z-index:999;
             box-shadow:0 4px 15px rgba(0,0,0,0.3);opacity:0;visibility:hidden;
             transition:opacity 0.5s,visibility 0.5s,transform 0.3s;backdrop-filter:blur(8px);
@@ -348,7 +338,7 @@
 
         .lotus-header { margin-bottom:20px; }
         .lotus-header svg { width:48px;height:48px;fill:var(--text-rose); }
-        .invitation-footer { font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(107,77,117,0.6);margin-top:24px;font-weight:400;text-transform:uppercase; }
+        .invitation-footer { font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.6);margin-top:24px;font-weight:400;text-transform:uppercase; }
 
         @keyframes pulse { 0%,100%{opacity:0.5}50%{opacity:1} }
         @media(max-width:400px){
@@ -366,8 +356,13 @@
         <svg id="music-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
 
+    <!-- ====== SOBRE ====== -->
     <div id="envelope-screen">
         <div id="env-stars"></div>
+        <!-- Contenedor para linternas en la pantalla inicial -->
+        <div id="env-lanterns-container" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1;"></div>
+
+        <!-- Destellos fijos -->
         <div class="env-sparkle" style="--sd:2.2s;--sdelay:0s;top:60px;left:80px;">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2L13.4 10.6L22 12L13.4 13.4L12 22L10.6 13.4L2 12L10.6 10.6Z" fill="#d4af37"/></svg>
         </div>
@@ -515,36 +510,28 @@
             <div class="divider-ornate anim-fade-up"><div class="divider-ornate-diamond"></div></div>
 
             <div class="info-block anim-fade-up">
-                <div class="section-heading">Ubicaciones</div>
+                <div class="section-heading" style="margin-bottom: 25px;">Ubicaciones</div>
                 
-                <div class="map-card" style="background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('assets/ceremonia.jpg') center center / cover;">
-                    <div class="map-card-header">
-                        <span class="map-card-tipo">Ceremonia - 6:30 PM</span>
-                        <span class="map-card-nombre">Catedral Santuario de Ntra. Sra. de Guadalupe</span>
+                <div class="ubicacion-sencilla">
+                    <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--text-rose);margin-bottom:5px;letter-spacing:2px;font-weight:600;text-transform:uppercase;">Ceremonia - 6:30 PM</div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--text-deep);margin-bottom:12px;font-weight:600;">Catedral Santuario de Ntra. Sra. de Guadalupe</div>
+                    <div class="map-wrapper">
+                        <iframe src="https://maps.google.com/maps?q=Catedral+Santuario+de+Nuestra+Señora+de+Guadalupe&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <div class="map-card-body">
-                        <div class="map-wrapper">
-                            <iframe src="https://maps.google.com/maps?q=Catedral+Santuario+de+Nuestra+Señora+de+Guadalupe&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                        <a href="https://share.google/tuZHCKa0pzsWw0cmq" target="_blank" style="text-decoration:none;">
-                            <button class="btn-accion" style="margin-top:10px;">Ver en Google Maps</button>
-                        </a>
-                    </div>
+                    <a href="https://share.google/tuZHCKa0pzsWw0cmq" target="_blank" style="text-decoration:none;">
+                        <button class="btn-accion">Ver en Google Maps</button>
+                    </a>
                 </div>
                 
-                <div class="map-card" style="background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('assets/salon.jpg') center center / cover;">
-                    <div class="map-card-header">
-                        <span class="map-card-tipo">Recepción</span>
-                        <span class="map-card-nombre">La Torre Medievale Salón de Eventos</span>
+                <div class="ubicacion-sencilla" style="margin-top: 35px;">
+                    <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--text-rose);margin-bottom:5px;letter-spacing:2px;font-weight:600;text-transform:uppercase;">Recepción - 8:00 PM</div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--text-deep);margin-bottom:12px;font-weight:600;">La Torre Medievale Salón de Eventos</div>
+                    <div class="map-wrapper">
+                        <iframe src="https://maps.google.com/maps?q=La+Torre+Medievale+salon+de+eventos&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <div class="map-card-body">
-                        <div class="map-wrapper">
-                            <iframe src="https://maps.google.com/maps?q=La+Torre+Medievale+salon+de+eventos&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
-                        <a href="https://share.google/fkNpA7Xt3d62A7Bdr" target="_blank" style="text-decoration:none;">
-                            <button class="btn-accion" style="margin-top:10px;">Ver en Google Maps</button>
-                        </a>
-                    </div>
+                    <a href="https://share.google/fkNpA7Xt3d62A7Bdr" target="_blank" style="text-decoration:none;">
+                        <button class="btn-accion">Ver en Google Maps</button>
+                    </a>
                 </div>
             </div>
 
@@ -584,8 +571,8 @@
             <div class="divider-ornate anim-fade-up"><div class="divider-ornate-diamond"></div></div>
 
             <div class="bloque-vidrio anim-fade-up">
-                <div class="section-heading">Nuestra Sesión</div>
-                <p class="rsvp-intro" style="margin-bottom: 12px;">Desliza para ver un pequeño vistazo de mi sesión de fotos profesional.</p>
+                <div class="section-heading">Mi sesión</div>
+                <p class="rsvp-intro" style="margin-bottom: 12px;">Desliza para ver un pequeño vistazo de mi sesión de fotos.</p>
                 
                 <div class="carrusel-galeria">
                     <div class="carrusel-item" onclick="openLightbox('assets/galeria-1.jpg')"><img src="assets/galeria-1.jpg" alt="Foto 1"></div>
@@ -618,17 +605,7 @@
 
             <div class="bloque-vidrio anim-fade-up">
                 <div class="section-heading">Código de Vestimenta</div>
-                <div style="font-family:'Cinzel',serif;font-size:20px;font-weight:600;letter-spacing:4px;color:var(--text-deep);margin-top:2px;">Formal Negro</div>
-                <div class="vestimenta-icons">
-                    <div class="vestimenta-icon-item">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 2l-1 3H9L8 2H4l2 5v13h12V7l2-5h-4M9.5 10a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 9.5 13 1.5 1.5 0 0 1 8 11.5 1.5 1.5 0 0 1 9.5 10m5 0a1.5 1.5 0 0 1 1.5 1.5A1.5 1.5 0 0 1 14.5 13 1.5 1.5 0 0 1 13 11.5 1.5 1.5 0 0 1 14.5 10Z"/></svg>
-                        <span class="vestimenta-icon-label">Damas</span>
-                    </div>
-                    <div class="vestimenta-icon-item">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 2h10l-1.5 8H8.5L7 2M8.5 11l-1 11h9l-1-11H8.5M12 13v4m-2-2h4"/></svg>
-                        <span class="vestimenta-icon-label">Caballeros</span>
-                    </div>
-                </div>
+                <div style="font-family:'Cinzel',serif;font-size:22px;font-weight:600;letter-spacing:4px;color:var(--text-deep);margin-top:2px;">Formal Negro</div>
             </div>
 
             <div class="divider-ornate anim-fade-up"><div class="divider-ornate-diamond"></div></div>
@@ -644,11 +621,21 @@
 
             <div class="bloque-vidrio anim-fade-up">
                 <div class="section-heading">Confirmación</div>
-                <p class="rsvp-intro">Será un honor contar con tu presencia en esta noche tan especial. Por favor confirma tu asistencia.</p>
+                <p class="rsvp-intro">Por favor confírmame tu asistencia, será un honor contar con tu presencia en esta noche tan especial.</p>
+                
                 <div class="rsvp-input-wrap">
                     <label class="rsvp-input-label" for="guest-name">Nombre Completo</label>
                     <input type="text" id="guest-name" class="rsvp-input" placeholder="Escribe tu nombre aquí…">
                 </div>
+                
+                <div class="rsvp-input-wrap">
+                    <label class="rsvp-input-label" for="guest-attendance">¿Podrás acompañarme?</label>
+                    <select id="guest-attendance" class="rsvp-input">
+                        <option value="Sí asistiré">Sí asistiré</option>
+                        <option value="No podré asistir">No podré asistir</option>
+                    </select>
+                </div>
+                
                 <button onclick="sendConfirmationViaWhatsApp()" class="btn-confirmar">
                     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
                     Confirmar por WhatsApp
@@ -681,6 +668,7 @@
         </div>
     </main>
 
+    <!-- Visualizador Lightbox para Galería -->
     <div class="lightbox" id="gallery-lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Vista ampliada">
@@ -708,7 +696,7 @@
                 decay:Math.random()*(burst?0.016:0.007)+0.005,
                 rotation:Math.random()*Math.PI*2,
                 rotSpeed:(Math.random()-0.5)*0.18,
-                color:Math.random()>0.5?'212,175,55':'255,255,255' /* Dorado y blanco */
+                color:Math.random()>0.5?'212,175,55':'255,255,255'
             };
         }
         function createGlitterBurst(x,y){for(let i=0;i<20;i++)glitterParticles.push(makeParticle(x,y,true));}
@@ -745,7 +733,7 @@
         function startGlitter(){canvas.classList.add('visible');drawGlitter();setInterval(spawnAmbient,350);}
         document.addEventListener('click',e=>{if(document.body.classList.contains('content-active'))createGlitterBurst(e.clientX,e.clientY);});
 
-        /* ===== SCROLL OBSERVER (NUEVO) ===== */
+        /* ===== SCROLL OBSERVER ===== */
         function initScrollAnimations(){
             const elements = document.querySelectorAll('.anim-fade-up');
             const observer = new IntersectionObserver((entries) => {
@@ -759,18 +747,34 @@
             elements.forEach(el => observer.observe(el));
         }
 
+        /* ===== LINTERNAS (TEMA ENREDADOS) ===== */
+        function createLanterns(containerId, count){
+            const c=document.getElementById(containerId);
+            if(!c) return;
+            for(let i=0;i<count;i++){
+                const l=document.createElement('div'),w=Math.random()*12+12;
+                l.className='floating-lantern';
+                l.style.cssText=`width:${w}px;height:${w*1.5}px;left:${Math.random()*100}%;bottom:-40px;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*8}s;`;
+                c.appendChild(l);
+            }
+        }
+
         /* ===== SOBRE ===== */
         (function(){
             const c = document.getElementById('env-stars');
-            if (!c) return;
-            c.style.cssText = 'position:absolute;inset:0;overflow:hidden;';
-            for (let i = 0; i < 60; i++) {
-                const s = document.createElement('div');
-                s.className = 'env-star';
-                const size = Math.random() * 2.5 + 0.8;
-                s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+1.5).toFixed(1)}s;--delay:-${(Math.random()*4).toFixed(1)}s;`;
-                c.appendChild(s);
+            if (c) {
+                c.style.cssText = 'position:absolute;inset:0;overflow:hidden;';
+                for (let i = 0; i < 60; i++) {
+                    const s = document.createElement('div');
+                    s.className = 'env-star';
+                    const size = Math.random() * 2.5 + 0.8;
+                    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${(Math.random()*3+1.5).toFixed(1)}s;--delay:-${(Math.random()*4).toFixed(1)}s;`;
+                    c.appendChild(s);
+                }
             }
+            
+            // Iniciar linternas de fondo en el sobre
+            createLanterns('env-lanterns-container', 12);
         })();
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -797,7 +801,7 @@
                 screen.classList.add('fade-out');
                 document.body.classList.add('content-active');
                 if (musicBtn) musicBtn.classList.add('visible');
-                createLanterns();
+                createLanterns('lanterns-container', 18); // Linternas del contenido principal
                 startGlitter();
                 initScrollAnimations();
             }, 1400);
@@ -836,8 +840,11 @@
 
         function sendConfirmationViaWhatsApp(){
             const inp=document.getElementById('guest-name');
+            const attendance=document.getElementById('guest-attendance');
+            
             if(!inp||!inp.value.trim()){alert('Por favor ingresa tu nombre completo.');inp.focus();return;}
-            const msg=`¡Hola! Confirmo mi asistencia a los XV Años de Fernanda.\n\n• Nombre: ${inp.value.trim()}`;
+            
+            const msg=`¡Hola! Soy ${inp.value.trim()}.\nTe escribo para confirmar que *${attendance.value}* a los XV Años de Fernanda.`;
             window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
         }
 
@@ -872,17 +879,6 @@
             document.getElementById("minutes").innerText=m<10?"0"+m:m;
             document.getElementById("seconds").innerText=s<10?"0"+s:s;
         },1000);
-
-        /* ===== LINTERNAS (TEMA ENREDADOS) ===== */
-        function createLanterns(){
-            const c=document.getElementById('lanterns-container');
-            for(let i=0;i<15;i++){
-                const l=document.createElement('div'),w=Math.random()*12+12;
-                l.className='floating-lantern';
-                l.style.cssText=`width:${w}px;height:${w*1.5}px;left:${Math.random()*100}%;bottom:-40px;animation-duration:${Math.random()*15+10}s;animation-delay:${Math.random()*8}s;`;
-                c.appendChild(l);
-            }
-        }
     </script>
 </body>
 </html>
