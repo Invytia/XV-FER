@@ -8,9 +8,9 @@
     <style>
         :root {
             /* Paleta Enredados: Lila, Rosa y Dorado */
-            --rosa-bloque: rgba(255, 255, 255, 0.25);
+            --rosa-bloque: rgba(255, 255, 255, 0.35);
             --rosa-bloque-borde: rgba(212, 175, 55, 0.3);
-            --rosa-bloque-alt: rgba(255, 255, 255, 0.2);
+            --rosa-bloque-alt: rgba(255, 255, 255, 0.3);
             --text-deep: #2d1645; /* Morado profundo para legibilidad en cristal */
             --text-rose: #b58900; /* Dorado intenso */
             --text-muted: #4a2c5d;
@@ -161,17 +161,17 @@
         .invitation-frame {
             max-width:500px; width:100%; border:1px solid rgba(212,175,55,0.3);
             padding:50px 38px; text-align:center; position:relative;
-            /* Mayor transparencia para ver el fondo y las linternas */
-            background: rgba(255, 255, 255, 0.35);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.2) inset;
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            /* Mayor opacidad (0.80) para mejorar significativamente la lectura */
+            background: rgba(255, 255, 255, 0.80);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.4) inset;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             border-radius:4px; overflow:visible;
         }
 
         .hero-photo-wrap {
             width: 240px; height: 320px; margin: 0 auto 25px auto;
             border-radius: 120px 120px 0 0; padding: 6px;
-            background: rgba(255, 255, 255, 0.4); border: 1px solid rgba(212,175,55,0.4);
+            background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(212,175,55,0.4);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
         .hero-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 114px 114px 0 0; }
@@ -199,8 +199,8 @@
         .main-title { 
             font-family:'Pinyon Script',cursive;font-size:84px;color:var(--text-deep); 
             margin-bottom:2px; line-height:1;
-            /* Compensación para centrar la fuente cursiva */
-            transform: translateX(-12px);
+            /* Recorrido más pronunciado hacia la izquierda para centrar la tipografía cursiva */
+            transform: translateX(-28px);
             text-align: center;
         }
         
@@ -217,7 +217,7 @@
 
         /* ====== COUNTDOWN ====== */
         .countdown-grid { display:flex;justify-content:center;gap:10px;margin:18px auto 6px auto;max-width:340px; }
-        .countdown-item { flex:1;background:rgba(255,255,255,0.4);border:1px solid rgba(212,175,55,0.3);padding:12px 5px;border-radius:4px;backdrop-filter:blur(6px); }
+        .countdown-item { flex:1;background:rgba(255,255,255,0.6);border:1px solid rgba(212,175,55,0.3);padding:12px 5px;border-radius:4px;backdrop-filter:blur(6px); }
         .countdown-number { font-family:'Cinzel',serif;font-size:24px;font-weight:400;color:var(--text-rose);display:block; }
         .countdown-label { font-family:'Montserrat',sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted);font-weight:500; }
 
@@ -229,7 +229,7 @@
         .bloque-vidrio-alt { background:var(--rosa-bloque-alt); border:1px solid rgba(212,175,55,0.2); }
         
         /* ====== CALENDARIO ===== */
-        .calendar-widget{ margin-top:18px; background:rgba(255,255,255,0.25); border:1px solid rgba(212,175,55,0.4); border-radius:18px; overflow:hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
+        .calendar-widget{ margin-top:18px; background:rgba(255,255,255,0.35); border:1px solid rgba(212,175,55,0.4); border-radius:18px; overflow:hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
         .calendar-header{ padding:18px 20px 14px; text-align:center; color: var(--text-deep); position:relative; }
         .calendar-header::after{ content:''; position:absolute; left:0; bottom:0; width:100%; height:1px; background:rgba(212,175,55,0.3); }
         .calendar-year{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:5px; text-transform:uppercase; opacity:0.9; }
@@ -244,10 +244,10 @@
         
         .btn-accion {
             margin-top:18px; width:100%; border:1px solid rgba(212,175,55,0.6); border-radius:14px; padding:14px 18px;
-            background: rgba(255,255,255,0.2); color:var(--text-rose); display:flex; align-items:center; justify-content:center; gap:10px;
+            background: rgba(255,255,255,0.4); color:var(--text-rose); display:flex; align-items:center; justify-content:center; gap:10px;
             cursor:pointer; transition:.35s ease; font-family:'Cinzel',serif; font-size:10px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
         }
-        .btn-accion:hover { transform:translateY(-2px); background: rgba(212,175,55,0.15); }
+        .btn-accion:hover { transform:translateY(-2px); background: rgba(212,175,55,0.25); }
         .btn-accion svg { width:16px; height:16px; fill:var(--text-rose); flex-shrink:0; }
 
         /* ====== MAPAS SIMPLES ====== */
@@ -301,7 +301,7 @@
         .rsvp-input-label { font-family:'Cinzel',serif;font-size:8px;letter-spacing:3px;color:var(--text-deep);text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px; text-align:left;}
         .rsvp-input {
             width:100%;padding:13px 16px;font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;
-            color:var(--text-deep);background:rgba(255,255,255,0.7);border:1px solid rgba(212,175,55,0.4);
+            color:var(--text-deep);background:rgba(255,255,255,0.8);border:1px solid rgba(212,175,55,0.4);
             border-radius:4px;outline:none;transition:border-color 0.3s,box-shadow 0.3s;
         }
         select.rsvp-input { cursor: pointer; }
@@ -356,13 +356,10 @@
         <svg id="music-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
     </button>
 
-    <!-- ====== SOBRE ====== -->
     <div id="envelope-screen">
         <div id="env-stars"></div>
-        <!-- Contenedor para linternas en la pantalla inicial -->
         <div id="env-lanterns-container" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:1;"></div>
 
-        <!-- Destellos fijos -->
         <div class="env-sparkle" style="--sd:2.2s;--sdelay:0s;top:60px;left:80px;">
             <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2L13.4 10.6L22 12L13.4 13.4L12 22L10.6 13.4L2 12L10.6 10.6Z" fill="#d4af37"/></svg>
         </div>
@@ -516,7 +513,7 @@
                     <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--text-rose);margin-bottom:5px;letter-spacing:2px;font-weight:600;text-transform:uppercase;">Ceremonia - 6:30 PM</div>
                     <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--text-deep);margin-bottom:12px;font-weight:600;">Catedral Santuario de Ntra. Sra. de Guadalupe</div>
                     <div class="map-wrapper">
-                        <iframe src="https://maps.google.com/maps?q=Catedral+Santuario+de+Nuestra+Señora+de+Guadalupe&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14197.886071337424!2d-110.9572223!3d27.0942469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c8104fbba3d6cb%3A0xc66c1b3f9eb2a79c!2sSantuario%20de%20Nuestra%20Se%C3%B1ora%20de%20Guadalupe!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <a href="https://share.google/tuZHCKa0pzsWw0cmq" target="_blank" style="text-decoration:none;">
                         <button class="btn-accion">Ver en Google Maps</button>
@@ -527,7 +524,7 @@
                     <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--text-rose);margin-bottom:5px;letter-spacing:2px;font-weight:600;text-transform:uppercase;">Recepción - 8:00 PM</div>
                     <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:var(--text-deep);margin-bottom:12px;font-weight:600;">La Torre Medievale Salón de Eventos</div>
                     <div class="map-wrapper">
-                        <iframe src="https://maps.google.com/maps?q=La+Torre+Medievale+salon+de+eventos&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14197.886071337424!2d-110.9572223!3d27.0942469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86c8104fbba3d6cb%3A0xc66c1b3f9eb2a79c!2sLa%20Torre%20Medievale!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <a href="https://share.google/fkNpA7Xt3d62A7Bdr" target="_blank" style="text-decoration:none;">
                         <button class="btn-accion">Ver en Google Maps</button>
@@ -668,9 +665,8 @@
         </div>
     </main>
 
-    <!-- Visualizador Lightbox para Galería -->
     <div class="lightbox" id="gallery-lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
         <img id="lightbox-img" src="" alt="Vista ampliada">
     </div>
 
